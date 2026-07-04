@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Cut — Da Baby Cuts</title>
+  <meta name="description" content="Book your $25 haircut at Da Baby Cuts in Lompoc, CA. Appointment only." />
+  <link rel="icon" href="images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html"><img src="images/logo.png" alt="Da Baby Cuts" class="brand-logo" /></a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a class="nav-cta active" href="book.html">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-head">
+    <div class="wrap">
+      <h1 class="page-title">Book a Cut</h1>
+      <p class="section-sub">Appointment only · No walk-ins · Lompoc, CA</p>
+    </div>
+  </section>
+
+  <main class="wrap book-layout">
+    <!-- Checkout -->
+    <div class="checkout-card">
+      <div class="price-headline"><span class="big-price">$25</span><span class="per">/ cut</span></div>
+      <p class="price-terms">One-hour appointment · One-on-one</p>
+      <a class="btn pay" id="pay-btn" href="#">Pay &amp; Reserve →</a>
+      <p class="promo-note">First time? Enter code <strong>DAY1</strong> at checkout — your first cut is <strong>free</strong>.</p>
+      <p class="note" id="pay-status"></p>
+      <ul class="offer-tags book-tags">
+        <li>Fades</li><li>Tapers</li><li>Lineups</li><li>Designs</li><li>Beard Line-up</li>
+      </ul>
+    </div>
+
+    <!-- How it works -->
+    <div class="how">
+      <h2 class="section-title">How booking works</h2>
+      <ol class="steps">
+        <li><span class="step-n">1</span><div><strong>Pay &amp; reserve.</strong> Tap the button and pay your $25 through Stripe — secure card checkout. First-timers enter <strong>DAY1</strong> for a free cut.</div></li>
+        <li><span class="step-n">2</span><div><strong>Lock your time.</strong> You'll get a confirmation, then we set your one-hour slot (Mon–Sat, 9a–5p).</div></li>
+        <li><span class="step-n">3</span><div><strong>Get the address.</strong> Once you're booked &amp; paid, I send you the exact shop address in Lompoc.</div></li>
+        <li><span class="step-n">4</span><div><strong>Come through.</strong> Fresh cut, one-on-one, in and out in an hour.</div></li>
+      </ol>
+      <div class="hours-mini">
+        <h3>Hours</h3>
+        <ul class="hours-list">
+          <li><span>Mon – Sat</span><span>9:00a – 5:00p</span></li>
+          <li><span>Sunday</span><span>Closed</span></li>
+        </ul>
+      </div>
+      <p class="dm-line">Questions first? <a href="https://www.instagram.com/dababy.cuh" target="_blank" rel="noopener">DM @dababy.cuh</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Da Baby Cuts</span>
+      <a href="https://www.instagram.com/dababy.cuh" target="_blank" rel="noopener">@dababy.cuh</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
