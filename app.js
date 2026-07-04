@@ -1,10 +1,15 @@
 // Da Baby Cuts — gallery + small helpers.
-// To add your own cut photos: drop image files in /images and list them here.
+// To add/remove cut photos: drop image files in /images and edit this list.
 const GALLERY = [
-  "images/cut-1.jpg",
-  "images/cut-2.jpg",
-  "images/cut-3.jpg",
-  "images/cut-4.jpg",
+  "images/cut-a.jpg",
+  "images/cut-b.jpg",
+  "images/cut-c.jpg",
+  "images/cut-d.jpg",
+  "images/cut-e.jpg",
+  "images/cut-f.jpg",
+  "images/cut-g.jpg",
+  "images/cut-h.jpg",
+  "images/cut-i.jpg",
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
