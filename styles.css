@@ -152,23 +152,20 @@ section { padding: 74px 0; }
 .gallery { padding: 44px 20px 74px; }
 
 /* Book page layout */
-.book-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; padding: 50px 20px 80px; align-items: start; }
-.checkout-card {
+.book-page { padding: 50px 20px 80px; }
+.booking-section { margin-bottom: 56px; }
+.booking-embed {
+  min-height: 620px; margin-top: 24px;
   background: #101013; border: 1px solid var(--line); border-radius: 16px;
-  padding: 36px 30px; text-align: center; position: sticky; top: 90px;
+  overflow: hidden;
 }
-.checkout-card .price-headline { margin-bottom: 4px; }
-.btn.pay { display: block; width: 100%; margin: 22px 0 10px; font-size: 1.05rem; padding: 16px; }
-.btn.disabled { background: #3a352a; color: #a99f8c; cursor: not-allowed; }
-.btn.disabled:hover { transform: none; background: #3a352a; }
-.promo-note {
-  background: rgba(214,54,47,0.12); border: 1px solid rgba(214,54,47,0.4);
-  color: #f0c9c7; border-radius: 10px; padding: 12px 14px; font-size: 0.9rem; margin: 6px 0 0;
+.booking-embed.booking-fallback {
+  min-height: 220px; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 30px; color: #cfccc4;
 }
-.promo-note strong { color: var(--gold); }
-.checkout-card .note { color: var(--muted); font-size: 0.82rem; margin-top: 14px; }
-.checkout-card .note a { color: var(--gold); }
-.book-tags { margin-top: 22px; }
+.booking-fallback a { color: var(--gold); font-weight: 600; }
+.booking-section .note { color: var(--muted); font-size: 0.85rem; margin-top: 14px; text-align: center; }
+.how { max-width: 720px; }
 
 /* How it works steps */
 .how .section-title { font-size: 2rem; }

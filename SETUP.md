@@ -1,60 +1,53 @@
-# Setup — Stripe Payments & the DAY1 Free-Cut Code
+# Setup — Booking + Stripe Payments
 
-Your site is static (GitHub Pages), so it can't safely hold a Stripe secret
-key. The clean, secure way to take payments is a **Stripe Payment Link** — a
-checkout page Stripe hosts for you. You create it once, paste the URL into the
-site, and you're live. No server, no keys in the browser.
+Your site is static (GitHub Pages), so it uses **Cal.com** for the booking
+calendar and connects **your Stripe** inside Cal.com. Customers pick a time and
+pay in one flow. You set it up once and paste one link into the site.
 
-## 1. Create the Stripe account
-Go to https://stripe.com and sign up (free). Verify your email and add your
-payout bank info when prompted.
+## 1. Create a Cal.com account
+Go to https://cal.com and sign up (free). Pick a username like `dababy-cuts`.
 
-## 2. Create the $25 haircut Payment Link
-1. In the Stripe Dashboard, go to **Product catalog → + Add product**.
-2. Name: `Haircut`, Price: `$25.00`, one-time.
-3. Save, then click **Create payment link** for that product.
-4. On the payment link settings, turn **ON**: “**Allow promotion codes**”.
-   (This is what lets people type `DAY1`.)
-5. Optional but recommended: set a **confirmation message** or **redirect** so
-   after paying the customer sees “You're booked — I'll DM you your time and the
-   shop address.”
-6. Copy the link URL — it looks like `https://buy.stripe.com/xxxxxxxx`.
+## 2. Connect your Stripe
+1. Create a Stripe account at https://stripe.com (free) if you don't have one.
+2. In Cal.com: **Settings → Apps/Integrations → Stripe → Install/Connect**, and
+   log in to your Stripe. This links payouts to your bank.
 
-## 3. Create the DAY1 free-cut coupon
-1. Dashboard → **Product catalog → Coupons → + New**.
-2. Type: **Percentage**, `100%` off. (100% = free.)
-3. Save. Then under the coupon, add a **Promotion code**: `DAY1`.
-4. (Optional) Limit it — e.g. “first-time customers only,” max redemptions,
-   or an expiry date — so it isn't reused forever.
-
-Now when someone enters `DAY1` at checkout, the $25 becomes **$0**.
+## 3. Make the $25 haircut event
+1. Cal.com → **Event Types → + New**.
+2. Title: `Haircut`, Duration: **60 min**.
+3. **Buffers:** set an **after-event buffer of 10 min** (your cleaning time).
+4. Availability: **Mon–Sat, 9:00a–5:00p**.
+5. Under the event's **Apps/Payments**, enable **Stripe** and set price **$25**,
+   “require payment to book.”
+6. Save. Your event link looks like `dababy-cuts/haircut`.
 
 ## 4. Put the link on the site
-Open `app.js`, find this line near the top:
+Open `app.js`, find near the top:
 
 ```js
-const STRIPE_PAYMENT_LINK = "";
+const CAL_LINK = "";
 ```
 
-Paste your link between the quotes:
+Paste your event link (the `username/event` part, no https):
 
 ```js
-const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/xxxxxxxx";
+const CAL_LINK = "dababy-cuts/haircut";
 ```
 
-Commit and push. The **Pay & Reserve** button on the Book page turns gold and
-sends customers to your Stripe checkout. Until it's filled in, the button falls
-back to “DM @dababy.cuh to book.”
+Commit and push. The Book page now shows a live calendar; picking a slot takes
+payment through your Stripe. Until it's filled in, the page shows “DM to book.”
 
-## How the booking flow works today
-Payment Links handle **payment**, not a calendar. So the flow is:
-1. Customer pays $25 (or uses `DAY1` for a free first cut) on Stripe.
-2. Stripe emails them a receipt; you get a payment notification.
-3. You confirm their one-hour time slot and send the exact address by DM.
+## The private free-cut (your old “DAY1”)
+Since you don't want a public code, make it a **separate hidden link** instead:
 
-### Want fully automatic scheduling later?
-If you'd rather customers pick their own time slot and get the address
-automatically (no manual DM), the best fit for a barber is a booking platform
-like **Square Appointments** (free), **Booksy**, or **Fresha** — they combine
-the calendar, payment/deposit, reminders, and even discount codes. We can embed
-or link one of those from the Book page whenever you're ready.
+1. Cal.com → duplicate the Haircut event → title it `First Cut` (or similar).
+2. Set its price to **$0** (or just don't require payment).
+3. **Don't** link it anywhere on the site. Share that link *directly* with the
+   people you want to give a free first cut. Only people you send it to can use it.
+
+That gives you the same “free first cut” without advertising a code to everyone.
+
+## Want the all-in-one paid option instead?
+**Acuity Scheduling** (~$20/mo) does booking + Stripe + real typed coupon codes +
+reminders in one place. If you'd rather use that, say so and we'll wire it up the
+same way (one embed link).
