@@ -1,80 +1,51 @@
-# Lumière — Static Jewelry Dropshipping Store
+# Da Baby Cuts — Barber Website
 
-A static storefront you can host free on **GitHub Pages**, with a build-time
-importer that pulls products and images from **CJ Dropshipping** via their API.
+A single-page barber website hosted free on **GitHub Pages**.
 
-Because GitHub Pages only serves static files, there's no server to hold an API
-key. So products are imported ahead of time by a script you run locally (or in
-CI); the site itself just reads the finished `data/products.json`. Your API key
-never ships to the browser.
+Live at: **https://mjsales.github.io/selling-web/**
 
 ## Structure
 
 ```
-index.html          Storefront (product grid)
-product.html        Single product page (reads ?id=)
-app.js              Renders the catalog from data/products.json
+index.html          The whole site (hero, services, gallery, about, hours, book)
 styles.css          Styling
-data/products.json  The catalog the site displays (sample data included)
-images/             Downloaded product images (created by the importer)
-scripts/import-cj.mjs   CJ Dropshipping importer (run at build time)
-.env.example        Template for your CJ credentials
+app.js              Builds the gallery grid; set your photos here
+images/             Photos (placeholders for now — swap in your own)
+IMAGE-CREDITS.md    Licenses for the placeholder photos
 ```
 
-## View it locally
+## Add your own cut photos
 
-No build step needed. Serve the folder with any static server:
+The gallery currently uses free-licensed placeholder photos. To use your own
+(e.g. from [@dababy.cuh](https://www.instagram.com/dababy.cuh) — your own work,
+so you have full rights):
+
+1. Download your photos from Instagram (or use the originals).
+2. Drop the image files into the `images/` folder.
+3. Open `app.js` and edit the `GALLERY` list to point at your filenames:
+   ```js
+   const GALLERY = [
+     "images/my-cut-1.jpg",
+     "images/my-cut-2.jpg",
+     // ...
+   ];
+   ```
+4. To change the big hero background, replace `images/cut-1.jpg` (referenced in
+   `styles.css` under `.hero`), or swap the filename there.
+5. Commit and push — the live site updates in a minute or two.
+
+## Edit prices, hours, services
+
+All of it is plain text in `index.html` — search for the section
+(`Services & Prices`, `Hours`, etc.) and edit the numbers/words directly.
+
+## View locally
 
 ```bash
-python3 -m http.server 8000
-# then open http://localhost:8000
+python3 -m http.server 8000   # then open http://localhost:8000
 ```
-
-(Opening `index.html` directly via `file://` won't work because it fetches
-`data/products.json` — you need a local server.)
-
-## Deploy to GitHub Pages
-
-1. Push this branch to GitHub.
-2. Repo **Settings → Pages** → Source: *Deploy from a branch* → pick your
-   branch and `/ (root)` → Save.
-3. Your store goes live at `https://<user>.github.io/<repo>/`.
-
-The included `.nojekyll` file tells Pages to serve everything as-is.
-
-## Import real products from CJ Dropshipping
-
-1. Create a CJ account and enable API access:
-   https://developers.cjdropshipping.cn/
-2. Copy your credentials:
-   ```bash
-   cp .env.example .env
-   # edit .env with your CJ_EMAIL and CJ_API_KEY
-   ```
-3. Find the products you want to sell in CJ and note their product IDs (PIDs).
-   Add them to `PRODUCT_IDS` in `scripts/import-cj.mjs`, or pass on the CLI.
-4. Run the importer (Node 18+ for built-in `fetch`):
-   ```bash
-   node --env-file=.env scripts/import-cj.mjs PID1 PID2 PID3
-   ```
-   This downloads images into `images/`, applies your markup, and rewrites
-   `data/products.json`.
-5. Commit the updated `data/products.json` and `images/`, then push. Pages
-   redeploys automatically.
-
-Adjust the `MARKUP` constant in the importer to set your margin.
-
-## Why the API (not scraping)
-
-CJ grants resellers the right to use supplier product images for listing the
-products you sell through them — that's the licensed, terms-compliant path.
-Scraping images from a random Alibaba listing you're *not* buying through is
-both against their terms and a copyright problem, so this store is built around
-the supplier API instead.
 
 ## Next steps
 
-- **Checkout:** wire up Stripe (Payment Links are the fastest static-site
-  option; Stripe Checkout for a real cart).
-- **Custom domain:** add a `CNAME` file and point your domain at Pages.
-- **More products:** re-run the importer with more PIDs anytime.
+- Real online **booking** (e.g. Calendly / Square Appointments embed).
+- A **custom domain** (e.g. dababycuts.com) pointed at GitHub Pages.
