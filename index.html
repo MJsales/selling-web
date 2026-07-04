@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumière — Fine Everyday Jewelry</title>
+  <meta name="description" content="Elegant, affordable everyday jewelry — gold-plated earrings, necklaces, bracelets and rings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">Lumière</a>
+      <nav class="nav">
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <h1>Everyday pieces,<br />quietly luxurious.</h1>
+      <p>Gold-plated, hypoallergenic, and made to be worn every day. Free shipping on orders over $50.</p>
+      <a class="btn" href="#shop">Shop the collection</a>
+    </div>
+  </section>
+
+  <main class="wrap" id="shop">
+    <div class="section-head">
+      <h2>The Collection</h2>
+      <p class="muted" id="product-count"></p>
+    </div>
+    <div class="grid" id="product-grid" aria-live="polite">
+      <p class="muted">Loading pieces…</p>
+    </div>
+  </main>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <h2>About Lumière</h2>
+      <p>We curate elegant, wearable jewelry at honest prices. Every piece is chosen for quality, comfort, and staying power — no tarnish, no fuss.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span id="year"></span> Lumière. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
