@@ -80,14 +80,21 @@ a { color: inherit; text-decoration: none; }
 .section-sub { color: var(--muted); margin: 0 0 28px; }
 section { padding: 74px 0; }
 
-/* Services */
+/* Services / Pricing */
 .services { background: var(--panel); border-bottom: 1px solid var(--line); }
-.service-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 32px; }
-.service { background: #101013; border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; transition: border-color 0.15s, transform 0.15s; }
-.service:hover { border-color: var(--gold); transform: translateY(-3px); }
-.s-head { display: flex; justify-content: space-between; align-items: baseline; font-family: "Anton", sans-serif; font-size: 1.35rem; text-transform: uppercase; }
-.s-head .price { color: var(--gold); }
-.service p { margin: 8px 0 0; color: var(--muted); font-size: 0.95rem; }
+.price-block {
+  margin-top: 32px; text-align: center;
+  background: #101013; border: 1px solid var(--line); border-radius: 16px;
+  padding: 46px 24px; max-width: 640px;
+}
+.price-headline { display: flex; align-items: baseline; justify-content: center; gap: 12px; }
+.big-price { font-family: "Anton", sans-serif; font-size: clamp(4rem, 12vw, 6rem); color: var(--gold); line-height: 1; }
+.per { font-family: "Anton", sans-serif; font-size: 1.6rem; color: var(--muted); text-transform: uppercase; }
+.price-terms { font-family: "Anton", sans-serif; text-transform: uppercase; letter-spacing: 1px; color: var(--red); font-size: 1.15rem; margin: 14px 0 0; }
+.price-note { color: var(--muted); max-width: 440px; margin: 14px auto 0; font-size: 0.95rem; }
+.offer-tags { list-style: none; padding: 0; margin: 26px 0 0; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.offer-tags li { border: 1px solid var(--line); color: var(--ink); padding: 7px 15px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+.area { margin-top: 20px; color: var(--gold); font-weight: 600; font-size: 0.95rem; }
 
 /* Gallery */
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
@@ -100,7 +107,7 @@ section { padding: 74px 0; }
 .about { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 .about-text p { color: #cfccc4; }
-.about-photo img { width: 100%; border-radius: 14px; border: 1px solid var(--line); }
+.about-photo img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center 30%; border-radius: 14px; border: 1px solid var(--line); }
 
 /* Hours + Book */
 .hb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
